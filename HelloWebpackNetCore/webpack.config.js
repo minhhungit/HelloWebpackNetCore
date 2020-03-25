@@ -1,4 +1,5 @@
 ﻿const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -13,11 +14,30 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'wwwroot/dist'),
-        filename: '[name].bundle.js',        
+        filename: '[name].[hash].bundle.js',
         publicPath: '/dist/'
     },
     plugins: [
-        new CleanWebpackPlugin()
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'Demo HtmlWebpackPlugin',
+            template: './Views/Shared/_Layout.Template.ejs',
+            filename: '../../Views/Shared/_Layout.cshtml',
+            inject: false,
+            minify: false,
+            templateParameters: (compilation, assets, assetTags, options) => {
+                return {
+                    compilation,
+                    webpackConfig: compilation.options,
+                    htmlWebpackPlugin: {
+                        tags: assetTags,
+                        files: assets,
+                        options,
+                    },
+                    'foo': "I'm Jin"
+                }
+            }
+        }),
     ],
     module: {
         rules: [

@@ -23,7 +23,8 @@ namespace HelloWebpackNetCore
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            // https://www.alexdresko.com/2019/07/09/htmlwebpackplugin-asp-net-core-3/
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
