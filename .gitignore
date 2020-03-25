@@ -5,3 +5,5 @@
 /HelloWebpackNetCore/bin/Debug/netcoreapp3.1
 /HelloWebpackNetCore/obj
 /HelloWebpackNetCore/.vs/HelloWebpackNetCore/v16
+/HelloWebpackNetCore/node_modules
+/HelloWebpackNetCore/wwwroot/dist
