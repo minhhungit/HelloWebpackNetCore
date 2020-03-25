@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es5",
+    "module": "ES6",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node"
+  },
+  "includes": [
+    "./typings/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "wwwroot",
+    "webpack.config.js"
+  ],
+  "compileOnSave": false
+}

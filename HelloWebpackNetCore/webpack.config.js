@@ -1,12 +1,11 @@
 ﻿const path = require('path');
-//const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'development',
     entry: {
-        app: './clientapp/index.js',
-        print: './clientapp/printMe.js',
+        index: './clientapp/index.ts',
+        helloworld: './clientapp/helloworld.ts',
     },
     devtool: 'inline-source-map',
     devServer: {
@@ -14,17 +13,19 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'wwwroot/dist'),
-        filename: '[name].bundle.js',
+        filename: '[name].bundle.js',        
         publicPath: '/dist/'
     },
     plugins: [
-        new CleanWebpackPlugin(),
-        //new HtmlWebpackPlugin({
-        //    title: 'Output Management',
-        //}),
+        new CleanWebpackPlugin()
     ],
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
             {
                 test: /\.css$/,
                 use: [
@@ -38,6 +39,9 @@ module.exports = {
                     'file-loader',
                 ]
             }
-        ],
+        ],        
+    },    
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
     }
 };

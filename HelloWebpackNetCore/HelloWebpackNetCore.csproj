@@ -1,9 +1,28 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <!--https://stackoverflow.com/a/40708463-->
+  <PropertyGroup>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+  </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="**\*.ts" Exclude="$(GlobalExclude)" />
+  </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="clientapp\index.d.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="clientapp\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+  
 </Project>
